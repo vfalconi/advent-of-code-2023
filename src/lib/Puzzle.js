@@ -12,11 +12,7 @@ class Puzzle {
 		this.solution = this.steps.map((step, n) => {
 			const p = (useSample ? this.sample[n] : this.input);
 
-			if (this.parser instanceof Function) {
-				return step(p.map(line => this.parser(line)));
-			}
-
-			return step(p);
+			return step(p.map(line => this.parser(line)));
 		})
 	}
 
@@ -38,6 +34,10 @@ class Puzzle {
 
 	getInput = () => {
 		return this.readPuzzleInput();
+	}
+
+	parser = (input) => {
+		return input;
 	}
 }
 
